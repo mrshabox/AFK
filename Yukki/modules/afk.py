@@ -34,39 +34,39 @@ async def active_afk(_, message: Message):
             seenago = get_readable_time((int(time.time() - timeafk)))
             if afktype == "text":
                 send = await message.reply_text(
-                    f"**{message.from_user.first_name}** is back online and was away for {seenago}",
+                    f"**{message.from_user.first_name}** đã trực tuyến trở lại và đã vắng mặt được {seenago}",
                     disable_web_page_preview=True,
                 )
             if afktype == "text_reason":
                 send = await message.reply_text(
-                    f"**{message.from_user.first_name}** is back online and was away for {seenago}\n\nReason: `{reasonafk}`",
+                    f"**{message.from_user.first_name}** đã trực tuyến trở lại và đã vắng mặt được {seenago}\n\nLý do: `{reasonafk}`",
                     disable_web_page_preview=True,
                 )
             if afktype == "animation":
                 if str(reasonafk) == "None":
                     send =  await message.reply_animation(
                         data,
-                        caption=f"**{message.from_user.first_name}** is back online and was away for {seenago}",
+                        caption=f"**{message.from_user.first_name}** đã trực tuyến trở lại và đã vắng mặt được {seenago}",
                     )
                 else:
                     send = await message.reply_animation(
                         data,
-                        caption=f"**{message.from_user.first_name}** is back online and was away for {seenago}\n\nReason: `{reasonafk}",
+                        caption=f"**{message.from_user.first_name}** đã trực tuyến trở lại và đã vắng mặt được {seenago}\n\nLý do: `{reasonafk}",
                     )
             if afktype == "photo":
                 if str(reasonafk) == "None":
                     send = await message.reply_photo(
                         photo=f"downloads/{user_id}.jpg",
-                        caption=f"**{message.from_user.first_name}** is back online and was away for {seenago}",
+                        caption=f"**{message.from_user.first_name}** đã trực tuyến trở lại và đã vắng mặt được {seenago}",
                     )
                 else:
                     send = await message.reply_photo(
                         photo=f"downloads/{user_id}.jpg",
-                        caption=f"**{message.from_user.first_name}** is back online and was away for {seenago}\n\nReason: `{reasonafk}`",
+                        caption=f"**{message.from_user.first_name}** đã trực tuyến trở lại và đã vắng mặt được {seenago}\n\nLý do: `{reasonafk}`",
                     )
         except Exception as e:
             send =  await message.reply_text(
-                f"**{message.from_user.first_name}** is back online",
+                f"**{message.from_user.first_name}** đã online",
                 disable_web_page_preview=True,
             )
         await put_cleanmode(message.chat.id, send.message_id)
@@ -181,6 +181,6 @@ async def active_afk(_, message: Message):
 
     await add_afk(user_id, details)
     send = await message.reply_text(
-        f"{message.from_user.first_name} is now afk!"
+        f"{message.from_user.first_name} đã offline!"
     )
     await put_cleanmode(message.chat.id, send.message_id)
